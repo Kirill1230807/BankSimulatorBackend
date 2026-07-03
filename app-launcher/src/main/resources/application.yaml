@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: app-launcher
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank-db?currentSchema=users
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate.default_schema: users
+  flyway:
+    locations:
+      - classpath:db/migration
+    schemas: users
