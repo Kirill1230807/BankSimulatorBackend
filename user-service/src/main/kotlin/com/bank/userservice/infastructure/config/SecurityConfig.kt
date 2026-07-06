@@ -23,7 +23,11 @@ class SecurityConfig {
             .csrf { it.disable() }
             .authorizeHttpRequests { auth ->
                 auth
-                    .anyRequest().permitAll()
+                    .requestMatchers(
+                        "/users/register",
+                        "/users/login"
+                    ).permitAll()
+                    .anyRequest().authenticated()
             }
 
         return http.build()
