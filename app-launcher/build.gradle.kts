@@ -30,6 +30,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     runtimeOnly("org.postgresql:postgresql")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
 
     implementation(project(":user-service"))
     implementation(project(":core-finance"))
