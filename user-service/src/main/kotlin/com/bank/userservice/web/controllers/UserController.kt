@@ -1,5 +1,6 @@
 package com.bank.userservice.web.controllers
 
+import com.bank.userservice.api.dto.AuthResponse
 import com.bank.userservice.api.dto.UserLoginRequest
 import com.bank.userservice.api.dto.UserRegistrationRequest
 import com.bank.userservice.core.service.AuthService
@@ -29,7 +30,7 @@ class UserController(
     }
 
     @PostMapping("/login")
-    fun login(@Valid @RequestBody request: UserLoginRequest): ResponseEntity<String> {
+    fun login(@Valid @RequestBody request: UserLoginRequest): ResponseEntity<AuthResponse> {
 
         val result = authService.login(request)
 

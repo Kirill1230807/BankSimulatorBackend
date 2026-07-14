@@ -3,8 +3,8 @@ spring:
     name: app-launcher
   datasource:
     url: jdbc:postgresql://localhost:5432/bank-db?currentSchema=users
-    username: postgres
-    password: postgres
+    username: ${DB_USER}
+    password: ${DB_PASS}
   jpa:
     properties:
       hibernate.default_schema: users
@@ -12,3 +12,5 @@ spring:
     locations:
       - classpath:db/migration
     schemas: users
+  jwt:
+    secret: ${JWT_SECRET:Hx/u0CG3K2E6woSpDjRu/+p9/PY36ERIYUK7DifQeB0XbhX9KCGqZcT3A7FDlb4U/W0eUvh1CFvSrv7g1ClaYA==}
