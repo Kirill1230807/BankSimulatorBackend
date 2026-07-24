@@ -1,16 +1,19 @@
 spring:
   application:
     name: app-launcher
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/bank-db?currentSchema=users
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/bank-db?currentSchema=users
     username: ${DB_USER}
     password: ${DB_PASS}
-  jpa:
-    properties:
-      hibernate.default_schema: users
+
   flyway:
-    locations:
-      - classpath:db/migration
     schemas: users
+    locations: classpath:db/migration
+
   jwt:
-    secret: ${JWT_SECRET:Hx/u0CG3K2E6woSpDjRu/+p9/PY36ERIYUK7DifQeB0XbhX9KCGqZcT3A7FDlb4U/W0eUvh1CFvSrv7g1ClaYA==}
+    secret: ${JWT_SECRET}
+
+server:
+  port: 8080
+  address: 0.0.0.0
