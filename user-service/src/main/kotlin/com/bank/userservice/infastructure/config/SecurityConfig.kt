@@ -35,7 +35,8 @@ class SecurityConfig(
                 auth
                     .requestMatchers(
                         "/users/register",
-                        "/users/login"
+                        "/users/login",
+                        "/health/check"
                     ).permitAll()
                     .anyRequest().authenticated()
             }

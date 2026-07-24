@@ -30,11 +30,13 @@ data class UserEntity(
     @Column(name = "password_hash", nullable = false)
     val passwordHash: String?,
 
+    @Enumerated(EnumType.STRING)
     @Column
-    val role: String = "USER",
+    val role: Role = Role.USER,
 
+    @Enumerated(EnumType.STRING)
     @Column
-    val status: String = "ACTIVE",
+    val status: Status = Status.ACTIVE,
 
     @Column(name = "created_at")
     val createdAt: LocalDateTime = LocalDateTime.now()
@@ -49,8 +51,18 @@ fun User.toEntity(passwordHash: String?): UserEntity {
         phoneNumber = this.phoneNumber,
         birthday = LocalDate.parse(this.birthday),
         passwordHash = passwordHash,
-        role = "USER",
-        status = "ACTIVE",
+        role = Role.USER,
+        status = Status.ACTIVE,
         createdAt = LocalDateTime.now()
     )
+}
+
+enum class Role {
+    USER,
+    ADMIN
+}
+
+enum class Status {
+    ACTIVE,
+    BLOCKED
 }

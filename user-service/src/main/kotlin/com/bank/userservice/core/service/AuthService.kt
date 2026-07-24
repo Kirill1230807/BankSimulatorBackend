@@ -19,12 +19,6 @@ class AuthService(
 ) {
     @Transactional
     fun login(request: UserLoginRequest): AuthResponse {
-        val userEntity =
-            userRepository.findByEmail(request.email) ?: throw IllegalArgumentException("Невірний email або пароль")
-
-        if (!passwordEncoder.matches(request.password, userEntity.passwordHash)) {
-            throw IllegalArgumentException("Невірний email або пароль")
-        }
 
         authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(

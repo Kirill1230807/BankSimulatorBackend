@@ -17,7 +17,7 @@ class JwtUserDetailsService(
         return User.builder()
             .username(user.email)
             .password(user.passwordHash)
-            .roles(user.role)
+            .roles(user.role.toString())
             .build()
     }
 }
